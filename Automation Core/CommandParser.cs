@@ -20,6 +20,10 @@ namespace Automation_Core
             Variables.logger.LogLine("Parser response to panel command: " + parserResponse);
             return parserResponse;
         }
+        public static string ParseConsoleCommand(string command)
+        {
+            return ParseCommand(command);
+        }
         public static string ParseAuthenticatedCommand(string command)
         {
             Variables.logger.LogLine("Panel command: " + command);

@@ -10,41 +10,66 @@ using Automation_Core.Devices;
 
 namespace Automation_Core
 {
+    /// <summary>
+    /// Automation core system namespace definitions:
+    /// 
+    /// 
+    /// Automation - All learning and prediction based classes go here
+    /// 
+    /// Control - These classes are in between any commands being issued and the actual communication classes
+    /// All commands must talk through the 'control' namespace no command may directly communicate with any other namespaces
+    /// Control can execute hardware communicating methods based on the variables in the specific device
+    /// If a class in control needs to issue a command to another device outside it's own class, this command MUST also pass through control.
+    /// 
+    /// Crypto - Anything cryptography related goes here
+    /// 
+    /// Devices - These are variable holding classes used to define physical or virtual items
+    /// 
+    /// IO - Any disk related methods go in here, usually only accessed through the control class, some exceptions, see classes inside IO for details.
+    /// 
+    /// Media - Media related activities go here
+    /// 
+    /// Networking - Any network communication methods go here
+    /// 
+    /// Resources - Any binary files needed by the application
+    /// 
+    /// </summary>
     class Program
     {
-        //fucking test
         static Timer mainRefresh = new Timer(mainRefresh_Tick);
 		static Timer telnetRead = new Timer(telnetRead_Tick);
 
         private static void telnetRead_Tick(object state)
         {
-            for(int x = 0; x < 64; x++){
-                if (Variables.nodes[x] != null)
+            //Attempt to read the telnet output of each telnet connected node.
+            for (int x = 0; x < Variables.nodes.Length; x++)
+            {
+                if (Variables.nodes[x] == null)
+                    continue;
+                if (Variables.nodes[x].TelnetConnected)
                 {
-                    if (Variables.nodes[x].TelnetConnected)
-                    {
-                        string data = Networking.TelnetComms.ReadCommand(Variables.nodes[x].TelnetConnection);
-                        if (data != null && data != "" && data != " ")
-                            Variables.logger.LogLine(data);
-                    }
+                    string data = Networking.TelnetComms.ReadCommand(Variables.nodes[x].TelnetConnection);
+                    if (data != null && data != "" && data != " ")
+                        Variables.logger.LogLine(data);
                 }
             }
         }
 
         private static void mainRefresh_Tick(object state)
         {
-            //Variables.sysstate = 0;
-            //Variables.envstate = 0;
-            //Variables.alrmstate = 0;
+            //check if status are still correct
         }
 
         static void Main(string[] args)
         {
+            //Load everything and startup
             Console.WriteLine("Automation System Core Loading...");
             Console.WriteLine("Data directory is " + Properties.Settings.Default.Path);
             Console.WriteLine("Log directory is " + Properties.Settings.Default.LogPath);
+            //check if logging directory exists, if not, create it
             if (!Directory.Exists(Properties.Settings.Default.LogPath))
                 Directory.CreateDirectory(Properties.Settings.Default.LogPath);
+            //setup the logging system, likely to change to a premade solution, rather then this custom class
             Variables.logger = new Logger(Properties.Settings.Default.LogVerbosity, Properties.Settings.Default.LogPath);
             Variables.logger.LineLogged += logger_LineLogged;
             Console.WriteLine("Logging initialized");
@@ -60,6 +85,7 @@ namespace Automation_Core
             IO.ConfigOps.CheckCoreConfigExistance();
             IO.ConfigOps.LoadAllData();
             Variables.logger.LogLine("Begin Timer initialization");
+            //these timer intervals are subject to change after actual tests
             mainRefresh.Change(1000, 100);
             telnetRead.Change(2000, 5000);
             Networking.PanelComms.SetupPanelServer();
@@ -73,23 +99,24 @@ namespace Automation_Core
         }
         static void InitNodes()
         {
-            for(int x=0; x < 64; x++)
+            //loop to iterate through all the configured nodes and connect to them
+            for (int x = 0; x < Variables.nodes.Length; x++)
             {
-                if(Variables.nodes[x] != null)
-                {
-                    Control.Node.InitConnection(x);
-                }
+                if (Variables.nodes[x] == null)
+                    continue;
+                Control.Node.InitConnection(x);
             }
         }
         static void logger_LineLogged(object sender, LineLoggedEventArgs e)
         {
+            //Logging event to write to console
             Console.WriteLine(e.Text);
         }
         static void Prompt()
         {
+            //start a prompt, there's probably a better way to do this....
             Console.Write("ATM>");
-            string input = Console.ReadLine();
-            Variables.logger.LogLine(CommandParser.ParseCommand(input));
+            Variables.logger.LogLine(CommandParser.ParseConsoleCommand(Console.ReadLine()));
             Prompt();
 
         }

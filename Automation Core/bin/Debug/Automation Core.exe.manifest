@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation Core.exe" size="51200">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation Core.exe" size="50176">
       <assemblyIdentity name="Automation Core" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yCpWbpTyD2lMRy2T4kQudvwsM/gN7owBtmMCPabfIts=</dsig:DigestValue>
+        <dsig:DigestValue>K33+LA4vlK3jTEwPxF2htcngMq2toc23CC0TN12kGxg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -73,3 +73,28 @@ I:\Users\Kolby\Source\BitBucket\AutomationSystem\Automation Core\obj\Debug\Autom
 I:\Users\Kolby\Source\BitBucket\AutomationSystem\Automation Core\obj\Debug\Automation Core.application
 I:\Users\Kolby\Source\BitBucket\AutomationSystem\Automation Core\obj\Debug\Automation Core.exe
 I:\Users\Kolby\Source\BitBucket\AutomationSystem\Automation Core\obj\Debug\Automation Core.pdb
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.csprojResolveAssemblyReference.cache
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation_Core.Properties.Resources.resources
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.csproj.GenerateResource.Cache
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.exe
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.pdb
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Automation Core.exe.config
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Automation Core.exe.manifest
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Automation Core.application
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Automation Core.exe
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Automation Core.pdb
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Fleck.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\INIFileParser.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\libmpc.net.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\LiteGuard.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\NAudio.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\NetworksApi.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\PrimS.Telnet.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\Xml.Net.dll
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\INIFileParser.xml
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\LiteGuard.xml
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\NAudio.xml
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\bin\Debug\PrimS.Telnet.xml
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.TrustInfo.xml
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.exe.manifest
+I:\Users\Kolby\Source\GitHub\AutomationSystem\Automation Core\obj\Debug\Automation Core.application

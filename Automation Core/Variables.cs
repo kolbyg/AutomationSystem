@@ -16,12 +16,9 @@ namespace Automation_Core
         public static Media.MusicPlayer musicPlayer;
         public static string[] musicFiles;
         public static int curMusicFile;
-        
-        //public static List<Node> nodes;
-        //public static List<Relay> relays;
-        public static List<IOSensor> ioSensors;
-        public static List<DSensor> dSensors;
-        //public static List<Sprinkler> sprinklers;
+
+        //public static List<IOSensor> ioSensors;
+        //public static List<DSensor> dSensors;
 
         //GENERAL CONFIG
         public static bool MediaPlayerEnabled;

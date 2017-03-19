@@ -25,18 +25,18 @@ namespace Automation_Core.Control
             string alarmMessage = "Invalid Alarm Type";
             if (Properties.Settings.Default.AlarmType ==0)
             {
-                Automation_Core.Security.Alarm.TriggerRelayAlarm();
+                //Automation_Core.Security.Alarm.TriggerRelayAlarm();
                 alarmMessage = "Alarm Relay Triggered";
             }
             else if(Properties.Settings.Default.AlarmType == 1)
             {
-                Automation_Core.Security.Alarm.TriggerSpeakerAlarm();
-                Automation_Core.Security.Alarm.TriggerRelayAlarm();
+                //Automation_Core.Security.Alarm.TriggerSpeakerAlarm();
+                //Automation_Core.Security.Alarm.TriggerRelayAlarm();
                 alarmMessage = "Alarm Relay and Sound Triggered";
             }
             else if(Properties.Settings.Default.AlarmType == 2)
             {
-                Automation_Core.Security.Alarm.TriggerSpeakerAlarm();
+                //Automation_Core.Security.Alarm.TriggerSpeakerAlarm();
                 alarmMessage = "Alarm Sound Triggered";
             }
             return alarmMessage;
@@ -80,18 +80,18 @@ namespace Automation_Core.Control
             string alarmMessage = "Invalid Alarm Type";
             if (Properties.Settings.Default.AlarmType == 0)
             {
-                Automation_Core.Security.Alarm.StopRelayAlarm();
+                //Automation_Core.Security.Alarm.StopRelayAlarm();
                 alarmMessage = "Alarm Relay Disengaged";
             }
             else if (Properties.Settings.Default.AlarmType == 1)
             {
-                Automation_Core.Security.Alarm.StopSpeakerAlarm();
-                Automation_Core.Security.Alarm.StopRelayAlarm();
+                //Automation_Core.Security.Alarm.StopSpeakerAlarm();
+                //Automation_Core.Security.Alarm.StopRelayAlarm();
                 alarmMessage = "Alarm Relay and Sound Disengaged";
             }
             else if (Properties.Settings.Default.AlarmType == 2)
             {
-                Automation_Core.Security.Alarm.StopSpeakerAlarm();
+                //Automation_Core.Security.Alarm.StopSpeakerAlarm();
                 alarmMessage =  "Alarm Sound Disengaged";
             }
             Variables.logger.LogLine("resuming audio");
