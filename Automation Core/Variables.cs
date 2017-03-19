@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NetworksApi.TCP.SERVER;
 using Automation_Core.Devices;
-using Libmpc;
 
 namespace Automation_Core
 {
