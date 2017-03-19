@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+    index.html
+    HTML file for the outer panel layout (menubar and titlebar).
+-->
+<html>
+    <head>
+        <title>Home Control System</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="css/outer.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+		<script>
+		
+		</script>
+    </head>
+    <body>
+        <div class="flex-container-vertical">
+            <div class="flex-object-header">
+                <p id="header-clock">July 19 2016, 1:57:23 PM</p>
+                <p id="header-status">Initializing...</p>
+                
+                <div id="header-buttonbar">
+                    <a class="button-text-symbol" id="header-console">&#xE18F;</a>
+                    <a class="button-text-symbol" id="header-settings">&#xE115;</a>
+                    <a class="button-text-symbol" id="header-lock">&#xE1F6;</a>
+                </div>
+            </div>
+            <div class="flex-object-content-container">
+                <div class="flex-object-panel-container">
+                    <iframe id="iframe-panel-container"></iframe>
+                </div>
+                <div class="flex-object-menubar">
+                    <ul id="menubar-list">
+                        <li id="menubar-item-dashboard"><img src="img/icons/dashboard.png" alt=""/><span>Dashboard</span></li>                        
+                        <li id="menubar-item-lighting"><img src="img/icons/lighting.png" alt=""/><span>Lighting</span></li>
+                        <li id="menubar-item-environmental"><img src="img/icons/environmental.png" alt=""/><span>Environmental</span></li>
+                        <li id="menubar-item-media"><img src="img/icons/media.png" alt=""/><span>Media</span></li>
+                        <li id="menubar-item-security"><img src="img/icons/security.png" alt=""/><span>Security</span></li>
+                        <li id="menubar-item-events"><img src="img/icons/events.png" alt=""/><span>Events</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex-object-footer">
+                
+            </div>
+        </div>
+        <script src="js/auto-common.js" type="text/javascript"></script>
+        <script src="js/auto-menubar.js" type="text/javascript"></script>
+		<script src="js/date.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+               selectMenubarItem($("#menubar-item-dashboard"));
+               selectPanel("dashboard");
+			   initWS();
+			   getInfo();
+			   updateClock();
+			   keepAlive();
+			   assignValues();
+			   function assignValues()
+			   {
+					document.getElementById('header-status').innerHTML = sysstatus;
+					setTimeout(assignValues, 100);
+			   }
+            });
+        </script>
+        
+    </body>  
+</html>

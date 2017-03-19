@@ -15,6 +15,7 @@ namespace Automation_Core.Devices
         public string Name;
         public string Type;
         public string Desc;
+        public int RelayID;
         public int ID;
         public bool Active;
     }

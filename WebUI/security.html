@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+    security.html
+    HTML file for inner Security panel
+-->
+<html>
+    <head>
+        <title>Security</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="css/inner.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+        <style>
+            /* TODO put your CSS here */
+        </style>
+    </head>
+    <body>
+		<fieldset>
+		<legend>Alarm System</legend>
+			<div class="sec-alarm-buttons">
+				<button type="button" id="sec-alarm-arm">Arm</button>
+				<button type="button" id="sec-alarm-disarm">Disarm</button>
+				<button type="button" id="sec-alarm-panic">Trigger Alarm Now</button>
+			</div>
+		</fieldset><fieldset>
+		<legend>Lock Controls</legend>
+			<div class="sec-lock-buttons">
+				<button type="button" id="sec-lock-gate1">Front Gate</button>
+				<button type="button" id="sec-lock-gate2">Back Gate</button>
+				<button type="button" id="sec-lock-fdoor">Front Door</button>
+				<button type="button" id="sec-lock-bdoor">Back Door</button>
+			</div>
+			<div class="sec-lock-buttons">
+				<button type="button" id="sec-lock-bsdoor">Basement Door</button>
+				<button type="button" id="sec-lock-br1door">Bathroom 1</button>
+				<button type="button" id="sec-lock-br2door">Bathroom 2</button>
+				<button type="button" id="sec-lock-svrmdoor">Server Room</button>
+			</div>
+			
+				
+		</fieldset>
+		
+        <script src="js/auto-common.js" type="text/javascript"></script>
+        
+        <script>
+            $(document).ready(function(){
+			   initWS();
+            });
+        </script>
+    </body>
+</html>

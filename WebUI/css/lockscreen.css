@@ -1,0 +1,95 @@
+/*
+    lockscreen.css
+    Layout and styles for the lock screen.
+
+    Created on : Jul 31, 2016, 11:26:42 AM
+    Author     : Chris
+*/
+
+.ls-container-main
+{
+    display: block;
+    width: 90vw;
+    margin: 50vh auto 0;
+    height: 40vh;
+}
+
+.ls-container-status > p
+{
+    font-size: 32pt;
+    margin: 5px auto;
+}
+
+#ls-clock-datetime
+{
+    font-size: 48pt;
+}
+
+.ls-bottom-message
+{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 18pt;
+}
+
+#ls-lightbox-login
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 10;
+    display: none;
+    background-color: #666666;
+}
+
+#ls-loginbox
+{
+    width: 60vw;
+    height: 40vh;
+    margin: auto;    
+}
+
+#ls-loginbox-input
+{
+    width: 90%;
+    font-size: 32pt;
+    margin: 10px auto;
+}
+
+.ls-loginbox-title
+{
+    font-size: 18pt;
+    margin: 10px auto 5px;
+}
+
+.ls-loginbox-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 40%;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.ls-loginbox-buttons > button
+{
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 24pt;
+}
+
+#ls-loginbox-message
+{
+    text-align: center;
+    font-size: 18pt;
+    margin: 5px auto;
+}

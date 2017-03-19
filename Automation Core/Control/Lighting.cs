@@ -48,6 +48,7 @@ namespace Automation_Core.Control
                     case "RELAY":
                         resp += "Issuing command to relay module\n";
                         if (Convert.ToInt32(Value) > 1) Value = "1";
+                        Control.Relay.SetState(light.RelayID, Convert.ToBoolean(Value));
                         break;
                 }
             }

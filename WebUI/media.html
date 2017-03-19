@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+    media.html
+    HTML file for inner Media panel
+-->
+<html>
+    <head>
+        <title>Media</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="css/inner.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+        <style>
+            /* TODO put your CSS here */
+        </style>
+    </head>
+    <body>
+		<fieldset>
+		<legend>Music Controls</legend>
+			<div class="media-basiccontrol-buttons">
+				<button type="button" id="media-basiccontrol-play">Play</button>
+				<button type="button" id="media-basiccontrol-pause">Pause</button>
+				<button type="button" id="media-basiccontrol-next">Next Track</button>
+				<button type="button" id="media-basiccontrol-volup">Volume Up</button>
+			</div>
+			<div class="media-basiccontrol-buttons">
+				<button type="button" id="media-basiccontrol-mute">Mute</button>
+				<button type="button" id="media-basiccontrol-resetrandom">Reset Randomization</button>
+				<button type="button" id="media-basiccontrol-rescan">Rescan</button>
+				<button type="button" id="media-basiccontrol-voldown">Volume Down</button>
+			</div>
+		</fieldset>
+		<fieldset>
+		<legend>Currently Playing</legend>
+		<div class="media-basicstats">
+			<p id="music-currentsong">No Song Currently Playing</p>
+			<p id="music-currentvol">No Volume Data</p>
+		</div>
+		</fieldset>
+		<fieldset>
+		<legend>Playlist Selection</legend>
+		<div class="media-basiccontrol-buttons">
+			<button type="button" id="media-basiccontrol-background">Background Music</button>
+			<button type="button" id="media-basiccontrol-xmas">Xmas Music</button>
+			<button type="button" id="media-basiccontrol-party">Party Music</button>
+			<button type="button" id="media-basiccontrol-soundtrack">Soundtrack Music</button>
+		</div>
+		</fieldset>
+        <script src="js/auto-common.js" type="text/javascript"></script>
+		<script>
+            $(document).ready(function(){
+			   initWS();
+			   getInfo();
+			   assignValues();
+			   function assignValues()
+			   {
+					document.getElementById('music-currentvol').innerHTML = "Volume: " + volume;
+					document.getElementById('music-currentsong').innerHTML = "Song: " + song;
+					setTimeout(assignValues, 100);
+			   }
+            });
+        </script>
+				
+	  
+    </body>
+</html>

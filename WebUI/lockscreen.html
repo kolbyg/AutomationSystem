@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+    lockscreen.html
+    HTML file for the lock screen.
+-->
+<html>
+    <head>
+        <title>Home Control System</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="css/lockscreen.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="ls-container-main">
+            <div class="ls-container-status">
+                <p id="ls-clock-datetime">Unknown</p>
+                <p id="ls-status">Standby</p>
+                <p id="ls-song">Standby</p>
+            </div>
+            <p class="ls-bottom-message">Touch anywhere to unlock</p>
+        </div>       
+        
+        <div id="ls-lightbox-login">
+            <div id="ls-loginbox">
+                <p class="ls-loginbox-title">Please Authenticate</p>
+                <input type="number" id="ls-loginbox-input" />
+                <div class="ls-loginbox-buttons">
+                     <button type="button" id="ls-loginbox-clear">Clear</button>
+                     <button type="button" id="ls-loginbox-cancel">Cancel</button>
+                     <button type="button" id="ls-loginbox-override">Override</button>
+                     <button type="button" id="ls-loginbox-enter">Enter</button>
+                </div>
+                <p id="ls-loginbox-message"></p>
+            </div>
+        </div>
+        <script src="js/auto-lockscreen.js" type="text/javascript"></script>
+		<script src="js/date.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+			   initWS();
+			   updateClock();
+			   getInfo();
+			   keepAlive();
+            });
+        </script>
+    </body>
+</html>

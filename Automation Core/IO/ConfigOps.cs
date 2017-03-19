@@ -183,6 +183,7 @@ namespace Automation_Core.IO
                     Variables.lights[x].Desc = data["Light"]["Description"];
                     Variables.lights[x].Name = data["Light"]["Name"];
                     Variables.lights[x].ParentNodeID = Convert.ToInt32(data["Light"]["ParentNodeID"]);
+                    Variables.lights[x].RelayID = Convert.ToInt32(data["Light"]["RelayID"]);
                     Variables.lights[x].ParentNodeChannel = data["Light"]["ParentNodeChannel"];
                     Variables.lights[x].Active = Convert.ToBoolean(data["Light"]["Active"]);
                 } else
@@ -346,6 +347,7 @@ namespace Automation_Core.IO
             data["Light"]["Description"] = "A Light";
             data["Light"]["Name"] = "A Light";
             data["Light"]["ParentNodeID"] = "0";
+            data["Light"]["RelayID"] = "0";
             data["Light"]["ParentNodeChannel"] = "0";
             data["Light"]["Active"] = "false";
             Variables.logger.LogLine("Writing data to file");

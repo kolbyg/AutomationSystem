@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+    dashboard.html
+    HTML file for inner Dashboard panel
+-->
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="css/inner.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+        <style>
+            /* TODO put your CSS here */
+        </style>
+    </head>
+    <body>
+        <fieldset>
+		<legend>Basic Controls</legend>
+			<div class="dash-basiccontrol-buttons">
+				<button type="button" id="dash-basiccontrol-sleep">Sleep</button>
+				<button type="button" id="dash-basiccontrol-wake">Wake</button>
+				<button type="button" id="dash-basiccontrol-mute">Mute System</button>
+				<button type="button" id="dash-basiccontrol-derp">Unnamed</button>
+			</div>
+		</fieldset>
+        <fieldset>
+		<legend>Quick Status</legend>
+			<div class="dash-quickstatus">
+				<p id="dash-quickstatus-currenttime">System Mode</p>
+				<p id="dash-quickstatus-hvacstatus">HVAC Status</p>
+				<p id="dash-quickstatus-almstatus">Alarm Status</p>
+				<p id="dash-quickstatus-pwrstatus">Power Status</p>
+				<p id="dash-quickstatus-waterstatus">Water Status</p>
+				<p id="dash-quickstatus-musicstatus">Music Status</p>
+				<p id="dash-quickstatus-kwdraw">Current Power Draw</p>
+				<p id="dash-quickstatus-nextevent">Next Event</p>
+			</div>
+		</fieldset>
+        <script src="js/auto-common.js" type="text/javascript"></script>
+        <script>
+            initWS();
+			getInfo();
+			assignValues();
+			   function assignValues()
+			   {
+					document.getElementById('dash-quickstatus-currenttime').innerHTML = "Mode: " + daymode;
+					document.getElementById('dash-quickstatus-hvacstatus').innerHTML = "HVAC Status: " + hvacstatus;
+					document.getElementById('dash-quickstatus-almstatus').innerHTML = "Alarm Status: " + alarmstatus;
+					document.getElementById('dash-quickstatus-pwrstatus').innerHTML = "Power Status: " + powerstatus;
+					document.getElementById('dash-quickstatus-waterstatus').innerHTML = "Water Status: " + waterstatus;
+					document.getElementById('dash-quickstatus-musicstatus').innerHTML = "Music Status: " + musicstatus;
+					document.getElementById('dash-quickstatus-kwdraw').innerHTML = "Current Power Draw (Approx): " + kwdraw;
+					document.getElementById('dash-quickstatus-nextevent').innerHTML = "Next Event: " + nextevt;
+					setTimeout(assignValues, 100);
+			   }
+        </script>
+    </body>
+</html>

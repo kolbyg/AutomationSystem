@@ -24,8 +24,8 @@ namespace Automation_Core.Control
         public static void SendNodeCommand(string DataToSend, int NodeID)
         {
             Variables.logger.LogLine(0, "Received command to send \"" + DataToSend + "\" to node ID " + NodeID.ToString());
-            string NodeIP = Variables.nodes.First(item => item.ID == NodeID).IPAddress;
-            string NodeType = Variables.nodes.First(item => item.ID == NodeID).Type;
+            string NodeIP = Variables.nodes[NodeID].IPAddress;
+            string NodeType = Variables.nodes[NodeID].Type;
             Variables.logger.LogLine(0, "Node ID " + NodeID.ToString() + "is at the address " + NodeIP + " and is type " + NodeType);
             switch (NodeType)
             {
@@ -33,7 +33,7 @@ namespace Automation_Core.Control
                     //send command over tcpip
                     break;
                 case "ARDUINOTTY":
-
+                    //send command over serial
                     break;
             }
         }

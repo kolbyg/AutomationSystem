@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+    lighting.html
+    HTML file for inner Lighting panel
+-->
+<html>
+    <head>
+        <title>Lighting</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="css/inner.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+        <style>
+            /* TODO put your CSS here */
+        </style>
+    </head>
+    <body>
+        <fieldset>
+		<legend>Quick Commands</legend>
+			<div class="lighting-quick-buttons">
+				<button type="button" id="lighting-quick-allon">All Lights On</button>
+				<button type="button" id="lighting-quick-alloff">All Lights Off</button>
+				<button type="button" id="lighting-quick-1"></button>
+				<button type="button" id="lighting-quick-2"></button>
+			</div>
+		</fieldset>
+		
+        <script src="js/auto-common.js" type="text/javascript"></script>
+        
+        <script>
+            $(document).ready(function(){
+			   initWS();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+/* 
+    common.css
+    Style elements common to all inner and outer layouts.
+
+    Created on : Jul 19, 2016, 3:20:36 PM
+    Author     : Chris
+*/
+
+@font-face
+{
+    font-family: "Segoe UI";
+    src: url(fonts/segoeui.ttf);
+}
+
+@font-face
+{
+    font-family: "Segoe UI Symbol";
+    src: url(fonts/seguisym.ttf);
+}
+
+body
+{
+    color: #dddddd;
+    background-color: #242424;
+    font-family: "Segoe UI";
+}
+
+.button-text-symbol
+{
+    font-family: "Segoe UI Symbol";
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+.button-text
+{
+    font-family: "Segoe UI";
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}

@@ -1,0 +1,179 @@
+/* 
+    inner.css
+    Layout and styles common to all inner panels.
+
+    Created on : Jul 28, 2016, 5:06:17 PM
+    Author     : Chris
+*/
+
+/* all yours, Kolby */
+.media-basiccontrol-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 17vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.media-basiccontrol-buttons > button
+{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.media-basiccontrol-buttons > button:active {
+  background-color: #3e8e41;
+}
+.sec-alarm-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.sec-alarm-buttons > button
+{
+    background-color: #e62e00; /* Red */
+    border: none;
+    color: white;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.sec-alarm-buttons > button:active {
+  background-color: #cc2900;
+}
+.lighting-quick-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 10vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.lighting-quick-buttons > button
+{
+    background-color: #ffd700; /* Yerro */
+    border: none;
+    color: black;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.lighting-quick-buttons > button:active {
+  background-color: #eec600;
+}
+.sec-lock-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.sec-lock-buttons > button
+{
+    background-color: #e62e00; /* Red */
+    border: none;
+    color: white;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.sec-lock-buttons > button:active {
+  background-color: #cc2900;
+}
+.dash-basiccontrol-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.dash-basiccontrol-buttons > button
+{
+    background-color: #3399ff; /* Blue */
+    border: none;
+    color: white;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.dash-basiccontrol-buttons > button:active {
+  background-color: #0066cc;
+}
+
+.env-hvac-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.env-hvac-buttons > button
+{
+    background-color: #3399ff; /* Blue */
+    border: none;
+    color: white;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.env-hvac-buttons > button:active {
+  background-color: #0066cc;
+}
+
+.env-water-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20vh;
+    text-align: center;
+    margin: 10px auto;
+}
+.env-water-buttons > button
+{
+    background-color: #3399ff; /* Blue */
+    border: none;
+    color: white;
+    flex-basis: 20%;
+    margin: auto;
+    height: 90%;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+}
+.env-water-buttons > button:active {
+  background-color: #0066cc;
+}
