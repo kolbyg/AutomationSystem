@@ -39,7 +39,7 @@ var uid = getUrlVars()["uid"];
 var nextevt = "UNDEFINED";
 var wsUri = "ws://172.17.2.92:5400/AtmComm";
 var websocket;
-if(uid == null || uid == "")
+if(uid === null || uid === "")
 {
     window.location.replace("lockscreen.html");
 }
@@ -55,10 +55,10 @@ function getUrlVars()
 function initWS()
 {
 	websocket = new WebSocket(wsUri);
-	websocket.onopen = function(evt) { onOpen(evt) };
-	websocket.onclose = function(evt) { onClose(evt) };
-	websocket.onmessage = function(evt) { onMessage(evt) };
-	websocket.onerror = function(evt) { onError(evt) };
+	websocket.onopen = function(evt) { onOpen(evt); };
+	websocket.onclose = function(evt) { onClose(evt); };
+	websocket.onmessage = function(evt) { onMessage(evt); };
+	websocket.onerror = function(evt) { onError(evt); };
 }
 function onOpen(evt)
 {
@@ -72,7 +72,7 @@ function onClose(evt)
 
 function onMessage(evt)
 {
-	parseMessage(evt.data)
+	parseMessage(evt.data);
 	console.log('WS Server Response: ' + evt.data);
 }
 
@@ -83,26 +83,26 @@ function onError(evt)
 
 function doSend(message)
 {
-	if(websocket.readyState == 0)
+	if(websocket.readyState === 0)
 	{
 		console.log("WS is currently connecting, command ignored.");
 		return;
 	}
-	else if(websocket.readyState == 1)
+	else if(websocket.readyState === 1)
 	{
 		websocket.send(message);
 		console.log("Command sent to WS server: " + message);
 		return;
 	}
-	else if(websocket.readyState == 2)
+	else if(websocket.readyState === 2)
 	{
 		console.log("WS is currently closing, command ignored");
 		return;
 	}
-	else if(websocket.readyState == 3)
+	else if(websocket.readyState === 3)
 	{
 		console.log("WS is currently closed, attempting to reconnect. Please send command again.");
-		if(message == "keepalive")
+		if(message === "keepalive")
 		{
 			sysstatus = "Disconnected from server";
 		}
@@ -113,15 +113,16 @@ function doSend(message)
 }
 function parseMessage(message)
 {
-	if(message == undefined)
+	if(message === undefined)
 		return;
+    var msg;
 	if(message.includes(":"))
 	{
-		var msg = message.split(":");
+		msg = message.split(":");
 	}
 	else
 	{
-		var msg = [message];
+		msg = [message];
 	}
 	switch (msg[0])
 	{
@@ -170,50 +171,50 @@ function keepAlive()
 }
 $("#media-basiccontrol-play").click(function()
 {
-  doSend("$" + uid + " music play");
+  doSend("$$" + uid + " music play");
   getMediaInfo();
 });
 $("#media-basiccontrol-pause").click(function()
 {
-  doSend("$" + uid + " music pause");
+  doSend("$$" + uid + " music pause");
   getMediaInfo();
 });
 $("#media-basiccontrol-next").click(function()
 {
-  doSend("$" + uid + " music next");
+  doSend("$$" + uid + " music next");
   getMediaInfo();
 });
 $("#media-basiccontrol-rescan").click(function()
 {
-  doSend("$" + uid + " music rescan");
+  doSend("$$" + uid + " music rescan");
   getMediaInfo();
 });
 $("#media-basiccontrol-volup").click(function()
 {
-  doSend("$" + uid + " music volup");
+  doSend("$$" + uid + " music volup");
   getMediaInfo();
 });
 $("#media-basiccontrol-voldown").click(function()
 {
-  doSend("$" + uid + " music voldown");
+  doSend("$$" + uid + " music voldown");
   getMediaInfo();
 });
 $("#media-basiccontrol-resetrandom").click(function()
 {
-  doSend("$" + uid + " music resetrand");
+  doSend("$$" + uid + " music resetrand");
   getMediaInfo();
 });
 $("#lighting-quick-allon").click(function()
 {
-  doSend("$" + uid + " lighting allon");
+  doSend("$$" + uid + " lighting allon");
 });
 $("#lighting-quick-alloff").click(function()
 {
-  doSend("$" + uid + " lighting alloff");
+  doSend("$$" + uid + " lighting alloff");
 });
 $("#media-basiccontrol-mute").click(function()
 {
-  doSend("$" + uid + " music volume 0");
+  doSend("$$" + uid + " music volume 0");
   getMediaInfo();
 });
 $("#sec-alarm-panic").click(function()
@@ -222,5 +223,5 @@ $("#sec-alarm-panic").click(function()
 });
 $("#sec-alarm-disarm").click(function()
 {
-  doSend("$" + uid + " alarm disarm panel");
+  doSend("$$" + uid + " alarm disarm panel");
 });

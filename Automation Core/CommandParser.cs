@@ -18,9 +18,9 @@ namespace Automation_Core
             Variables.logger.LogLine("Sending command to parser: " + Command);
             string[] splitCmd = Command.ToLower().Split(' ');
             string ParserResponse;
-            if (splitCmd[0].StartsWith("$"))
+            if (splitCmd[0].StartsWith("$$"))
             {
-                string UserPIN = splitCmd[0].Substring(1);
+                string UserPIN = splitCmd[0].Substring(2);
                 Devices.User AuthUser = null; ;
                 foreach (Devices.User user in Variables.users)
                 {
