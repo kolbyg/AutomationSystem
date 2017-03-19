@@ -183,11 +183,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Automation\" />
-    <Folder Include="Crypto\" />
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="IO\ErrorDefs.txt" />
     <Content Include="License.txt" />
