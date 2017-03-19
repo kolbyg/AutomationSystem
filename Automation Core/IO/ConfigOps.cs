@@ -63,7 +63,7 @@ namespace Automation_Core.IO
             int Count = 0;
             FileIniDataParser parser = new FileIniDataParser();
             IniData data;
-            for (int x = 0; x < 256; x++)
+            for (int x = 0; x < Variables.sprinklers.Length; x++)
             {
                 if(File.Exists(Properties.Settings.Default.Path + "\\Config\\Irrigation\\" + x.ToString() + ".ini"))
                 {
@@ -75,6 +75,7 @@ namespace Automation_Core.IO
                     Variables.sprinklers[x].CycleTime = Convert.ToInt32(data["Irrigation"]["CycleTime"]);
                     Variables.sprinklers[x].Desc = data["Irrigation"]["Description"];
                     Variables.sprinklers[x].Name = data["Irrigation"]["Name"];
+                    Variables.sprinklers[x].Type = data["Irrigation"]["Type"];
                     Variables.sprinklers[x].TimeOn = data["Irrigation"]["TimeOn"];
                     Variables.sprinklers[x].Active = Convert.ToBoolean(data["Irrigation"]["Active"]);
                 }
@@ -91,7 +92,7 @@ namespace Automation_Core.IO
             int Count = 0;
             FileIniDataParser parser = new FileIniDataParser();
             IniData data;
-            for (int x = 0; x < 64; x++)
+            for (int x = 0; x < Variables.nodes.Length; x++)
             {
                 if (File.Exists(Properties.Settings.Default.Path + "\\Config\\Nodes\\" + x.ToString() + ".ini"))
                 {
@@ -117,7 +118,7 @@ namespace Automation_Core.IO
             int Count = 0;
             FileIniDataParser parser = new FileIniDataParser();
             IniData data;
-            for (int x = 0; x < 1024; x++)
+            for (int x = 0; x < Variables.nodes.Length; x++)
             {
                 if (File.Exists(Properties.Settings.Default.Path + "\\Config\\Relays\\" + x.ToString() + ".ini"))
                 {
@@ -143,7 +144,7 @@ namespace Automation_Core.IO
             int Count = 0;
             FileIniDataParser parser = new FileIniDataParser();
             IniData data;
-            for (int x = 0; x < 64; x++)
+            for (int x = 0; x < Variables.users.Length; x++)
             {
                 if (File.Exists(Properties.Settings.Default.Path + "\\Config\\Users\\" + x.ToString() + ".ini"))
                 {
@@ -170,7 +171,7 @@ namespace Automation_Core.IO
             int Count = 0;
             FileIniDataParser parser = new FileIniDataParser();
             IniData data;
-            for (int x = 0; x < 256; x++)
+            for (int x = 0; x < Variables.lights.Length; x++)
             {
                 if (File.Exists(Properties.Settings.Default.Path + "\\Config\\Lighting\\" + x.ToString() + ".ini"))
                 {
@@ -229,7 +230,7 @@ namespace Automation_Core.IO
             //Find next available ID
             int AvailableID = 0;
             Variables.logger.LogLine("Looking for an available ID to create an irrigation item.");
-            for (int x=0; x < 256; x++)
+            for (int x=0; x < Variables.sprinklers.Length; x++)
             {
                 if (Variables.sprinklers[x] == null)
                 {
@@ -237,7 +238,7 @@ namespace Automation_Core.IO
                     AvailableID = x;
                     break;
                 }
-                if (x == 255)
+                if (x == Variables.sprinklers.Length - 1)
                 {
                     return "Unable to create a new irrigation item, no IDs available.";
                 }
@@ -249,6 +250,7 @@ namespace Automation_Core.IO
             data["Irrigation"]["CycleTime"] = "30";
             data["Irrigation"]["Description"] = "A sprinkler";
             data["Irrigation"]["Name"] = "A Sprinkler";
+            data["Irrigation"]["Type"] = "RELAY";
             data["Irrigation"]["TimeOn"] = "12:00";
             data["Irrigation"]["Active"] = "false";
             Variables.logger.LogLine("Writing data to file");
@@ -262,7 +264,7 @@ namespace Automation_Core.IO
             //Find next available ID
             int AvailableID = 0;
             Variables.logger.LogLine("Looking for an available ID to create a relay.");
-            for (int x = 0; x < 1024; x++)
+            for (int x = 0; x < Variables.relays.Length; x++)
             {
                 if (Variables.relays[x] == null)
                 {
@@ -270,7 +272,7 @@ namespace Automation_Core.IO
                     AvailableID = x;
                     break;
                 }
-                if (x == 1023)
+                if (x == Variables.relays.Length - 1)
                 {
                     return "Unable to create a new relay, no IDs available.";
                 }
@@ -294,7 +296,7 @@ namespace Automation_Core.IO
             //Find next available ID
             int AvailableID = 0;
             Variables.logger.LogLine("Looking for an available ID to create a node.");
-            for (int x = 0; x < 64; x++)
+            for (int x = 0; x < Variables.nodes.Length; x++)
             {
                 if (Variables.nodes[x] == null)
                 {
@@ -302,7 +304,7 @@ namespace Automation_Core.IO
                     AvailableID = x;
                     break;
                 }
-                if (x == 63)
+                if (x == Variables.nodes.Length - 1)
                 {
                     return "Unable to create a new node, no IDs available.";
                 }
@@ -326,7 +328,7 @@ namespace Automation_Core.IO
             //Find next available ID
             int AvailableID = 0;
             Variables.logger.LogLine("Looking for an available ID to create a light.");
-            for (int x = 0; x < 256; x++)
+            for (int x = 0; x < Variables.lights.Length; x++)
             {
                 if (Variables.lights[x] == null)
                 {
@@ -334,7 +336,7 @@ namespace Automation_Core.IO
                     AvailableID = x;
                     break;
                 }
-                if (x == 255)
+                if (x == Variables.lights.Length - 1)
                 {
                     return "Unable to create a new light, no IDs available.";
                 }
@@ -361,7 +363,7 @@ namespace Automation_Core.IO
             //Find next available ID
             int AvailableID = 0;
             Variables.logger.LogLine("Looking for an available ID to create a user.");
-            for (int x = 0; x < 64; x++)
+            for (int x = 0; x < Variables.users.Length; x++)
             {
                 if (Variables.users[x] == null)
                 {
@@ -369,7 +371,7 @@ namespace Automation_Core.IO
                     AvailableID = x;
                     break;
                 }
-                if (x == 63)
+                if (x == Variables.users.Length - 1)
                 {
                     return "Unable to create a new user, no IDs available.";
                 }

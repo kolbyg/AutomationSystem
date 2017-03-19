@@ -12,22 +12,38 @@ namespace Automation_Core.Control
         {
             return Variables.sprinklers[SprinklerID].State;
         }
-        public static int SetState(int SprinklerID, bool State)
+        public static string SetState(int SprinklerID, bool State)
         {
-            Variables.logger.LogLine(0, "Received command to set sprinkler ID " + SprinklerID + " to state " + State.ToString());
-            int RelayID = Variables.sprinklers[SprinklerID].RelayID;
-            Variables.logger.LogLine(0, "Sprinkler id " + SprinklerID + " is relay ID " + RelayID.ToString());
-            bool CurrentState = GetCurrentState(SprinklerID);
-            Variables.logger.LogLine(0, "Sprinkler ID " + SprinklerID + " current state is " + CurrentState.ToString());
-            if (State == CurrentState)
+            string resp = "";
+            bool errorstate = false;
+            try
             {
-
-                Variables.logger.LogLine(0, "Command to set Sprinkler ID " + SprinklerID + " to state " + State.ToString() + " failed. The sprinkler is already in that state.");
-                return 2;
+                Variables.logger.LogLine(0, "Received command to set sprinkler ID " + SprinklerID + " to state " + State.ToString());
+                Devices.Sprinkler sprinkler = Variables.sprinklers[Convert.ToInt32(SprinklerID)];
+                if (State == sprinkler.State)
+                {
+                    return "Command to set Sprinkler ID " + SprinklerID + " to state " + State.ToString() + " failed. The sprinkler is already in that state.";
+                }
+                Variables.logger.LogLine(0, "Sprinkler ID " + SprinklerID + " current state is " + sprinkler.State.ToString());
+                switch (sprinkler.Type)
+                {
+                    case "RELAY":
+                        Variables.logger.LogLine(0, "Sprinkler id " + SprinklerID + " is relay ID " + sprinkler.RelayID.ToString());
+                        resp += "Issuing command to relay module\n";
+                        Variables.logger.LogLine(0, "Dispatching command to relay ID" + sprinkler.RelayID + " to set its state to " + State.ToString());
+                        Control.Relay.SetState(sprinkler.RelayID, State);
+                        break;
+                }
             }
-            Variables.logger.LogLine(0, "Dispatching command to relay ID" + RelayID + " to set its state to " + State.ToString());
-            Relay.SetState(RelayID, State);
-            return 0;
+            catch (Exception ex)
+            {
+                Variables.logger.LogLine(ex.Message);
+                errorstate = true;
+            }
+            if (errorstate)
+                return "Error: ControlLight encountered an error, please review logs.\n";
+            else
+                return resp;
         }
     }
 }

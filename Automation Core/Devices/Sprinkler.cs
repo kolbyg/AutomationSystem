@@ -14,6 +14,7 @@ namespace Automation_Core.Devices
         public string Desc;
         public bool Active;
         public bool State;
+        public string Type;
         public int CycleTime;
         public string TimeOn;
     }

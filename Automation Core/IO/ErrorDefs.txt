@@ -1,3 +1,0 @@
-﻿Success
-Command Failed, Invalid state
-Command Failed, State already set
