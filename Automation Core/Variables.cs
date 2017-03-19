@@ -29,6 +29,8 @@ namespace Automation_Core
         public static int MaxVolume;
         public static string MediaPath;
 
+        public static string PanelServerIP = "0.0.0.0";
+        public static string PanelServerPort = "5400";
 
         public static Sprinkler[] sprinklers = new Sprinkler[256];
         public static Relay[] relays = new Relay[1024];

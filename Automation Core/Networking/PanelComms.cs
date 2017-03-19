@@ -13,7 +13,7 @@ namespace Automation_Core.Networking
         public static void SetupPanelServer()
         {
             //Setup the websockets server for the HTML/JS interface to connect to
-            WebSocketServer wss = new WebSocketServer("ws://" + Properties.Settings.Default.PanelServerIP + ":" + Properties.Settings.Default.PanelServerPort);
+            WebSocketServer wss = new WebSocketServer("ws://" + Variables.PanelServerIP + ":" + Variables.PanelServerPort);
             wss.Start(socket =>
             {
                 //Log open and closeing of connections, send all messages through the panel parser

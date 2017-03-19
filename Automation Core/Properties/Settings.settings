@@ -2,44 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Automation_Core.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="PanelServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.0.0.0</Value>
-    </Setting>
-    <Setting Name="PanelServerPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)">5400</Value>
-    </Setting>
     <Setting Name="LogVerbosity" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Path" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\ProgramData\Automation</Value>
-    </Setting>
-    <Setting Name="NodeServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.0.0.0</Value>
-    </Setting>
-    <Setting Name="NodeServerPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)">5300</Value>
-    </Setting>
-    <Setting Name="WebServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.0.0.0</Value>
-    </Setting>
-    <Setting Name="WebServerPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)">580</Value>
-    </Setting>
-    <Setting Name="Learning" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="MusicPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">I:\Users\Kolby\OneDrive\PL Music\PLAYLIST</Value>
-    </Setting>
-    <Setting Name="VolumeGoverner" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">95</Value>
-    </Setting>
-    <Setting Name="MusicPlayerType" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="AlarmType" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="LogPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\ProgramData\AutomationLogs\</Value>

@@ -116,14 +116,6 @@ namespace Automation_Core
         {
             switch (cmd[0])
             {
-            }
-            //Command not hit, try next list
-            return CmdListLevel2(cmd);
-        }
-        static string CmdListLevel2(string[] cmd)
-        {
-            switch (cmd[0])
-            {
                 case "io":
                     if (cmd.Length <= 1)
                         return "derp";
@@ -146,6 +138,14 @@ namespace Automation_Core
                             break;
                     }
                     break;
+            }
+            //Command not hit, try next list
+            return CmdListLevel2(cmd);
+        }
+        static string CmdListLevel2(string[] cmd)
+        {
+            switch (cmd[0])
+            {
             }
             //Command not hit, try next list
             return CmdListLevel3(cmd);

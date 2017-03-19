@@ -12,7 +12,7 @@ namespace Automation_Core.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.0.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,30 +20,6 @@ namespace Automation_Core.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.0")]
-        public string PanelServerIP {
-            get {
-                return ((string)(this["PanelServerIP"]));
-            }
-            set {
-                this["PanelServerIP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5400")]
-        public string PanelServerPort {
-            get {
-                return ((string)(this["PanelServerPort"]));
-            }
-            set {
-                this["PanelServerPort"] = value;
             }
         }
         
@@ -68,114 +44,6 @@ namespace Automation_Core.Properties {
             }
             set {
                 this["Path"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.0")]
-        public string NodeServerIP {
-            get {
-                return ((string)(this["NodeServerIP"]));
-            }
-            set {
-                this["NodeServerIP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5300")]
-        public string NodeServerPort {
-            get {
-                return ((string)(this["NodeServerPort"]));
-            }
-            set {
-                this["NodeServerPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.0")]
-        public string WebServerIP {
-            get {
-                return ((string)(this["WebServerIP"]));
-            }
-            set {
-                this["WebServerIP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("580")]
-        public string WebServerPort {
-            get {
-                return ((string)(this["WebServerPort"]));
-            }
-            set {
-                this["WebServerPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Learning {
-            get {
-                return ((bool)(this["Learning"]));
-            }
-            set {
-                this["Learning"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("I:\\Users\\Kolby\\OneDrive\\PL Music\\PLAYLIST")]
-        public string MusicPath {
-            get {
-                return ((string)(this["MusicPath"]));
-            }
-            set {
-                this["MusicPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("95")]
-        public int VolumeGoverner {
-            get {
-                return ((int)(this["VolumeGoverner"]));
-            }
-            set {
-                this["VolumeGoverner"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int MusicPlayerType {
-            get {
-                return ((int)(this["MusicPlayerType"]));
-            }
-            set {
-                this["MusicPlayerType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int AlarmType {
-            get {
-                return ((int)(this["AlarmType"]));
-            }
-            set {
-                this["AlarmType"] = value;
             }
         }
         

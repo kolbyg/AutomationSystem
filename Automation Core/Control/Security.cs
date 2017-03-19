@@ -23,7 +23,7 @@ namespace Automation_Core.Control
             //send email
             Variables.logger.LogLine("Engaging alarm");
             string alarmMessage = "Invalid Alarm Type";
-            if (Properties.Settings.Default.AlarmType ==0)
+            /**if (Properties.Settings.Default.AlarmType ==0)
             {
                 //Automation_Core.Security.Alarm.TriggerRelayAlarm();
                 alarmMessage = "Alarm Relay Triggered";
@@ -38,7 +38,7 @@ namespace Automation_Core.Control
             {
                 //Automation_Core.Security.Alarm.TriggerSpeakerAlarm();
                 alarmMessage = "Alarm Sound Triggered";
-            }
+            }*/
             return alarmMessage;
         }
         public static string GetStatus()
@@ -78,7 +78,7 @@ namespace Automation_Core.Control
             //send email
             Variables.logger.LogLine("Disengaging alarm");
             string alarmMessage = "Invalid Alarm Type";
-            if (Properties.Settings.Default.AlarmType == 0)
+            /**if (Properties.Settings.Default.AlarmType == 0)
             {
                 //Automation_Core.Security.Alarm.StopRelayAlarm();
                 alarmMessage = "Alarm Relay Disengaged";
@@ -93,7 +93,7 @@ namespace Automation_Core.Control
             {
                 //Automation_Core.Security.Alarm.StopSpeakerAlarm();
                 alarmMessage =  "Alarm Sound Disengaged";
-            }
+            }*/
             Variables.logger.LogLine("resuming audio");
             Media.Resume();
             return alarmMessage;

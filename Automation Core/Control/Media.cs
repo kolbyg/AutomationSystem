@@ -69,13 +69,13 @@ namespace Automation_Core.Control
                 {
                     return "Volume is at maximum";
                 }
-                if (Variables.musicPlayer.Volume >= Properties.Settings.Default.VolumeGoverner)
+                if (Variables.musicPlayer.Volume >= Variables.MaxVolume)
                 {
-                    return "Volume is at maximum, limit set to " + Properties.Settings.Default.VolumeGoverner.ToString() + " by volume governer";
+                    return "Volume is at maximum, limit set to " + Variables.MaxVolume.ToString() + " by volume governer";
                 }
                 Variables.musicPlayer.Volume += 5;
                 if (Variables.musicPlayer.Volume > 100) Variables.musicPlayer.Volume = 100;
-                if (Variables.musicPlayer.Volume > Properties.Settings.Default.VolumeGoverner) Variables.musicPlayer.Volume = Properties.Settings.Default.VolumeGoverner;
+                if (Variables.musicPlayer.Volume > Variables.MaxVolume) Variables.musicPlayer.Volume = Variables.MaxVolume;
                 Variables.musicPlayer.SetVol();
                 return "Volume turned up, current level: " + Variables.musicPlayer.Volume;
 
@@ -114,8 +114,8 @@ namespace Automation_Core.Control
             {
                 if (Convert.ToInt32(Value) > 100 || Convert.ToInt32(Value) < 0)
                     return "Chosen volume is invalid, acceptable values are from 0-100";
-                if (Convert.ToInt32(Value) > Properties.Settings.Default.VolumeGoverner)
-                    return "Chosen volume is outside the allowable range set by the volume governer, acceptable values are 0-" + Properties.Settings.Default.VolumeGoverner;
+                if (Convert.ToInt32(Value) > Variables.MaxVolume)
+                    return "Chosen volume is outside the allowable range set by the volume governer, acceptable values are 0-" + Variables.MaxVolume;
                 Variables.musicPlayer.Volume = Convert.ToInt32(Value);
                 Variables.musicPlayer.SetVol();
                 return "Volume has been set to " + Variables.musicPlayer.Volume;

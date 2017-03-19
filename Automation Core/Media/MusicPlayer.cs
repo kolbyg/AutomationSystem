@@ -21,7 +21,7 @@ namespace Automation_Core.Media
         public void ResetRandomization() { randomList.Clear(); Variables.logger.LogLine("Music Randomizer list has been cleared"); }
         public void SetVol()
         {
-            if(Volume > 100 || Volume > Properties.Settings.Default.VolumeGoverner)
+            if(Volume > 100 || Volume > Variables.MaxVolume)
             {
                 Volume = 100;
                 Variables.logger.LogLine(3, "Volume level attempted to set to an invalid choice, this is a bug, please submit a bug report.");
@@ -51,7 +51,7 @@ namespace Automation_Core.Media
 
         public void refreshPlayList()
         {
-            Variables.musicFiles = Directory.GetFiles(Properties.Settings.Default.MusicPath);
+            Variables.musicFiles = Directory.GetFiles(Variables.MediaPath);
             randomList.Clear();
             findNext();
         }
