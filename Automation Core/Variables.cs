@@ -25,8 +25,6 @@ namespace Automation_Core
         public static bool LearningEnabled;
         public static bool HVACEnabled;
 
-        public static int LogVerbosity;
-
         public static string MediaPlayerType;
         public static int MaxVolume;
         public static string MediaPath;

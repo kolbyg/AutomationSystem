@@ -19,7 +19,7 @@ namespace Automation_Core.Networking
                 //Log open and closeing of connections, send all messages through the panel parser
                 socket.OnOpen = () => Variables.logger.LogLine("A client has connected to the WebSockets Server");
                 socket.OnClose = () => Variables.logger.LogLine("A client has disconnected from the WebSockets Server");
-                socket.OnMessage = message => socket.Send(CommandParser.ParsePanelCommand(message));
+                socket.OnMessage = message => socket.Send(CommandParser.ParseCommand(message));
             });
         }
         }
