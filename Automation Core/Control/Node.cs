@@ -16,6 +16,12 @@ namespace Automation_Core.Control
                 Variables.nodes[NodeID].TelnetConnected = true;
                 return "Successfully setup lutron node with telnet.";
             }
+            else if (Variables.nodes[NodeID].Type == "MPD")
+            {
+                Variables.nodes[NodeID].TelnetConnection = Networking.TelnetComms.setupClient(Variables.nodes[NodeID].IPAddress, 23, "lutron", "integration");
+                Variables.nodes[NodeID].TelnetConnected = true;
+                return "Successfully setup lutron node with telnet.";
+            }
             else
             {
                 return "Invalid Node.";

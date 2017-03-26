@@ -16,31 +16,30 @@ namespace Automation_Core.Media
         private List<int> randomList = new List<int>();
         public AudioFileReader audioFileReader;
         private bool manualStopped;
-        public int Volume { get; set; }
         public int Pos { get; set; }
         public void ResetRandomization() { randomList.Clear(); Variables.logger.LogLine("Music Randomizer list has been cleared"); }
         public void SetVol()
         {
-            if(Volume > 100 || Volume > Variables.MaxVolume)
+            if(Variables.CurVolume > 100 || Variables.CurVolume > Variables.MaxVolume)
             {
-                Volume = 100;
+                Variables.CurVolume = 100;
                 Variables.logger.LogLine(3, "Volume level attempted to set to an invalid choice, this is a bug, please submit a bug report.");
                 return;
             }
-            if (Volume < 0)
+            if (Variables.CurVolume < 0)
             {
-                Volume = 0;
+                Variables.CurVolume = 0;
                 Variables.logger.LogLine(3, "Volume level attempted to set to an invalid choice, this is a bug, please submit a bug report.");
                 return;
             }
-            Variables.logger.LogLine("Setting the playback volume to " + Volume + "%");
-            audioFileReader.Volume = (float)Volume / 100;
+            Variables.logger.LogLine("Setting the playback volume to " + Variables.CurVolume + "%");
+            audioFileReader.Volume = (float)Variables.CurVolume / 100;
         }
 
         public void setup()
         {
             Variables.logger.LogLine("Begin setup of music player");
-            Volume = 20;
+            Variables.CurVolume = 20;
             Variables.logger.LogLine("Volume set to 20");
             rnd = new Random();
             Variables.logger.LogLine("rnd generator initialized");
@@ -126,7 +125,7 @@ namespace Automation_Core.Media
             Variables.logger.LogLine("New player created");
             audioFileReader = new AudioFileReader(Variables.musicFiles[Variables.curMusicFile]);
             Variables.logger.LogLine("New audio file reader created with the file: " + Variables.musicFiles[Variables.curMusicFile]);
-            audioFileReader.Volume = (float)Volume / 100;
+            audioFileReader.Volume = (float)Variables.CurVolume / 100;
             Variables.logger.LogLine("volume float value is equal to: " + audioFileReader.Volume.ToString());
             player.Init(audioFileReader);
             Variables.logger.LogLine("adding the audio file reader to the player");

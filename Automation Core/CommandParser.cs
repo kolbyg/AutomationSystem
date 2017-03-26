@@ -244,6 +244,10 @@ namespace Automation_Core
                             if (cmd.Length <= 2)
                                 return "Volume is " + Control.Media.GetVol();
                             return Control.Media.SetVol(Convert.ToInt32(cmd[2]));
+                        case "playlist":
+                            if (cmd.Length <= 2)
+                                return "playlist name required";
+                            return Control.Media.LoadPL(cmd[2]);
                         case "volup":
                             return Control.Media.VolUp();
                         case "voldown":

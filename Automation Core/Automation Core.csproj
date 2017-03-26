@@ -126,9 +126,21 @@
     <Compile Include="IO\SerialComm.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Devices\Node.cs" />
+    <Compile Include="Media\MPDControl.cs" />
     <Compile Include="Media\MusicPlayer.cs" />
     <Compile Include="Networking\PanelComms.cs" />
     <Compile Include="Networking\TelnetComms.cs" />
+    <Compile Include="Packages\Libmpc\Enum.cs" />
+    <Compile Include="Packages\Libmpc\Exception.cs" />
+    <Compile Include="Packages\Libmpc\Mpc.cs" />
+    <Compile Include="Packages\Libmpc\MpcConnection.cs" />
+    <Compile Include="Packages\Libmpc\MpdDirectoryListing.cs" />
+    <Compile Include="Packages\Libmpc\MpdFile.cs" />
+    <Compile Include="Packages\Libmpc\MpdOutput.cs" />
+    <Compile Include="Packages\Libmpc\MpdResponse.cs" />
+    <Compile Include="Packages\Libmpc\MpdStatistics.cs" />
+    <Compile Include="Packages\Libmpc\MpdStatus.cs" />
+    <Compile Include="Packages\Libmpc\SocketManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -178,6 +190,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="License.txt" />
+    <Content Include="Packages\Libmpc\licence.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

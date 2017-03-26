@@ -204,6 +204,16 @@ $("#media-basiccontrol-resetrandom").click(function()
   doSend("$$" + uid + " music resetrand");
   getMediaInfo();
 });
+$("#media-basiccontrol-background").click(function()
+{
+  doSend("$$" + uid + " music playlist BGMusic");
+  getMediaInfo();
+});
+$("#media-basiccontrol-party").click(function()
+{
+  doSend("$$" + uid + " music playlist Party");
+  getMediaInfo();
+});
 $("#lighting-quick-allon").click(function()
 {
   doSend("$$" + uid + " lighting allon");

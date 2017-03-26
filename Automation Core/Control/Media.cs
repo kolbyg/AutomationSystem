@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Automation_Core.Media;
 
 namespace Automation_Core.Control
 {
@@ -15,6 +16,11 @@ namespace Automation_Core.Control
                 Variables.musicPlayer.Play();
                 return "Media Playing";
             }
+            else if(Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.Play();
+                return "Media Playing";
+            }
             return "Invalid Music Player";
         }
         public static string Pause()
@@ -22,6 +28,11 @@ namespace Automation_Core.Control
             if (Variables.MediaPlayerType == "INTERNAL")
             {
                 Variables.musicPlayer.Pause();
+                return "Media Paused";
+            }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.Pause();
                 return "Media Paused";
             }
             return "Invalid Music Player";
@@ -33,6 +44,12 @@ namespace Automation_Core.Control
                 Variables.musicPlayer.Stop();
                 return "Media Stopped";
             }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.Stop();
+                return "Media Stopped";
+
+            }
             return "Invalid Music Player";
         }
         public static string Next()
@@ -40,6 +57,11 @@ namespace Automation_Core.Control
             if (Variables.MediaPlayerType == "INTERNAL")
             {
                 Variables.musicPlayer.Next();
+                return "Media Advanced";
+            }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.Next();
                 return "Media Advanced";
             }
             return "Invalid Music Player";
@@ -50,6 +72,11 @@ namespace Automation_Core.Control
             {
                 return "Function not supported by current media player, command ignored.";
             }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.Prev();
+                return "Media Reverted";
+            }
             return "Invalid Music Player";
         }
         public static string ResetRandomization()
@@ -59,28 +86,23 @@ namespace Automation_Core.Control
                 Variables.musicPlayer.ResetRandomization();
                 return "Randomization reset";
             }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                return "Function not supported by current media player, command ignored.";
+            }
             return "Invalid Music Player";
         }
         public static string VolUp()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (Variables.CurVolume == Variables.MaxVolume)
+                return "Volume is at limit set by volume governer, cannot be set higher";
+            if(Variables.CurVolume == 100)
             {
-                if (Variables.musicPlayer.Volume >= 100)
-                {
-                    return "Volume is at maximum";
-                }
-                if (Variables.musicPlayer.Volume >= Variables.MaxVolume)
-                {
-                    return "Volume is at maximum, limit set to " + Variables.MaxVolume.ToString() + " by volume governer";
-                }
-                Variables.musicPlayer.Volume += 5;
-                if (Variables.musicPlayer.Volume > 100) Variables.musicPlayer.Volume = 100;
-                if (Variables.musicPlayer.Volume > Variables.MaxVolume) Variables.musicPlayer.Volume = Variables.MaxVolume;
-                Variables.musicPlayer.SetVol();
-                return "Volume turned up, current level: " + Variables.musicPlayer.Volume;
-
+                return "Volume is at 100, cannot be set higher";
             }
-            return "Invalid Music Player";
+            Variables.CurVolume++;
+            SetVol(Variables.CurVolume);
+            return "Volume turned up, current level: " + Variables.CurVolume;
         }
         public static string InitPlayer()
         {
@@ -91,51 +113,72 @@ namespace Automation_Core.Control
                 Variables.musicPlayer.BeginPlay();
                 return "Media player INTERNAL has been started";
             }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.setup();
+                return "Media player MPD has been started";
+            }
             return "Invalid Music Player";
         }
         public static string VolDown()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
-            {
-                if (Variables.musicPlayer.Volume <= 0)
-                {
-                    return "Volume is at minimum";
-                }
-                Variables.musicPlayer.Volume -= 5;
-                if (Variables.musicPlayer.Volume < 0) Variables.musicPlayer.Volume = 0;
-                Variables.musicPlayer.SetVol();
-                return "Volume turned down, current level: " + Variables.musicPlayer.Volume;
-            }
-            return "Invalid Music Player";
+            if (Variables.CurVolume == 0)
+                return "Volume is at 0, cannot be set any lower.";
+            Variables.CurVolume--;
+            SetVol(Variables.CurVolume);
+            return "Volume turned down, current level: " + Variables.CurVolume;
         }
         public static string SetVol(int Value)
         {
+            if (Value > 100 || Value < 0)
+            {
+                Value = 0;
+                return "Chosen volume is invalid, acceptable values are from 0-100";
+            }
+            if (Value > Variables.MaxVolume)
+            {
+                Value = Variables.MaxVolume;
+                return "Chosen volume is outside the allowable range set by the volume governer, acceptable values are 0-" + Variables.MaxVolume;
+            }
+            Variables.CurVolume = Value;
             if (Variables.MediaPlayerType == "INTERNAL")
             {
-                if (Convert.ToInt32(Value) > 100 || Convert.ToInt32(Value) < 0)
-                    return "Chosen volume is invalid, acceptable values are from 0-100";
-                if (Convert.ToInt32(Value) > Variables.MaxVolume)
-                    return "Chosen volume is outside the allowable range set by the volume governer, acceptable values are 0-" + Variables.MaxVolume;
-                Variables.musicPlayer.Volume = Convert.ToInt32(Value);
                 Variables.musicPlayer.SetVol();
-                return "Volume has been set to " + Variables.musicPlayer.Volume;
+                return "Volume has been set to " + Variables.CurVolume;
+            }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.SetVol();
+                return "Volume has been set to " + Variables.CurVolume;
+            }
+            return "Invalid Music Player";
+        }
+        public static string LoadPL(string PLName)
+        {
+            if (Variables.MediaPlayerType == "INTERNAL")
+            {
+                return "Function not supported by current media player, command ignored.";
+            }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.LoadPL(PLName);
+                return "Playlist load queued";
             }
             return "Invalid Music Player";
         }
         public static int GetVol()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
-            {
-                return Variables.musicPlayer.Volume;
-            }
-            Variables.logger.LogLine("Invalid Music Player");
-            return 0;
+            return Variables.CurVolume;
         }
         public static string GetSong()
         {
             if (Variables.MediaPlayerType == "INTERNAL")
             {
                 return Variables.musicFiles[Variables.curMusicFile].Substring(Variables.musicFiles[Variables.curMusicFile].LastIndexOf('\\') + 1);
+            }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                return MPDControl.GetSong();
             }
             return "Invalid Music Player";
         }
@@ -146,6 +189,11 @@ namespace Automation_Core.Control
                 Variables.musicPlayer.refreshPlayList();
                 return "All media folders have been rescanned.";
             }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+                MPDControl.Rescan();
+                return "Server rescan started.";
+            }
             return "Invalid Music Player";
         }
         public static string Resume()
@@ -153,6 +201,10 @@ namespace Automation_Core.Control
             if (Variables.MediaPlayerType == "INTERNAL")
             {
                 return Play();
+            }
+            else if (Variables.MediaPlayerType == "MPD")
+            {
+
             }
             return "Invalid Music Player";
         }
