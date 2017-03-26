@@ -1,0 +1,8 @@
+﻿HIGH PRIORITY:
+add arduino ethernet support as a node
+add arduino code
+
+LOW PRIORITY:
+ADD the ability for multiple MPD nodes rather then just one
+Change the config to enable/disable the internal media player rather then toggle between formats
+add support for creating mpd playlists based on subfolders
