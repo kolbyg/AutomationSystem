@@ -47,7 +47,15 @@ namespace Automation_Core.Media
         public static void Connect()
         {
             //do the connect
-            mpc.Connection.Connect();
+            try
+            {
+                mpc.Connection.Connect();
+            }
+            catch(Exception ex)
+            {
+                Variables.logger.LogLine("MPD Connection error: " + ex.Message);
+                return;
+            }
             //initial operations
             SetVol();
             LoadPL("BGMusic");
