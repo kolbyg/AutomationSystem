@@ -16,5 +16,7 @@ namespace Automation_Core.Devices
         public bool Active;
         public bool TelnetConnected;
         public PrimS.Telnet.Client TelnetConnection;
+        public bool MPDConnected;
+        public Libmpc.Mpc MPDConnection;
     }
 }

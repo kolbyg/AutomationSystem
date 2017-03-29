@@ -25,12 +25,10 @@ namespace Automation_Core
         public static bool LearningEnabled;
         public static bool HVACEnabled;
 
-        public static string MediaPlayerType;
+        public static bool InternalMediaPlayerEnabled;
         public static int MaxVolume;
         public static int CurVolume;
-        public static string MediaPath;
-        public static string MPDIP;
-        public static int MPDPort;
+        public static string InternalMediaPath;
 
         public static string PanelServerIP = "0.0.0.0";
         public static string PanelServerPort = "5400";

@@ -10,8 +10,6 @@ namespace Automation_Core.Media
     class MPDControl
     {
         private static Mpc mpc = new Mpc();
-        private static System.Net.IPAddress IP = System.Net.IPAddress.Parse("172.17.2.57");
-        private static System.Net.IPEndPoint IPPort = new System.Net.IPEndPoint(IP, 6600);
         public static int Pos { get; set; }
         public static void SetVol()
         {
@@ -35,8 +33,10 @@ namespace Automation_Core.Media
             mpc.SetVol(Variables.CurVolume);
         }
 
-        public static void setup()
+        public static void setup(int NodeID)
         {
+            System.Net.IPAddress IP = System.Net.IPAddress.Parse(Variables.nodes[NodeID].IPAddress);
+            System.Net.IPEndPoint IPPort = new System.Net.IPEndPoint(IP, 6600);
             //Set the volume to 70, resonable level for mpd
             Variables.CurVolume = 70;
             //Create a connection and assign it to mpc, connect

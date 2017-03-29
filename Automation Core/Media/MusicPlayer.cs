@@ -50,7 +50,7 @@ namespace Automation_Core.Media
 
         public void refreshPlayList()
         {
-            Variables.musicFiles = Directory.GetFiles(Variables.MediaPath);
+            Variables.musicFiles = Directory.GetFiles(Variables.InternalMediaPath);
             randomList.Clear();
             findNext();
         }

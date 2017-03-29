@@ -87,10 +87,14 @@ namespace Automation_Core
             //these timer intervals are subject to change after actual tests
             mainRefresh.Change(1000, 100);
             telnetRead.Change(2000, 5000);
+            //setup the websockets panel server
             Networking.PanelComms.SetupPanelServer();
-            Variables.logger.LogLine("Begin media initialization");
-            Control.Media.InitPlayer();
-            Variables.logger.LogLine("Begin node connections (this may take a while)");
+            if (Variables.InternalMediaPlayerEnabled)
+            {
+                Variables.logger.LogLine("Begin internal media player initialization");
+                Control.Media.InitInternalPlayer();
+            }
+            Variables.logger.LogLine("Begin node connections and initializations (this may take a while)");
             InitNodes();
             Variables.logger.LogLine(1, "Automation system initialization complete");
             Variables.logger.LogLine("Setup complete, launch interactive prompt");

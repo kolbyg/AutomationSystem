@@ -3,6 +3,8 @@ add arduino ethernet support as a node
 add arduino code
 
 LOW PRIORITY:
-ADD the ability for multiple MPD nodes rather then just one
-Change the config to enable/disable the internal media player rather then toggle between formats
+ADD the ability for multiple MPD nodes rather then just one - mpd should act as a node, not something specialy coded - DONE, but MPDControl need to be a non static class and should be stored in the node array
+
 add support for creating mpd playlists based on subfolders
+Add support for rooms/locations, lots of config, every detail
+add more detail to all devices, more location information, both physical and virtual, for relays, physical location of the relay and of what it controls

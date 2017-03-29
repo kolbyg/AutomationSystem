@@ -146,16 +146,15 @@ function parseMessage(message)
 
 function getInfo()
 {
-	doSend("var volume");
-	doSend("var song");
+	getMediaInfo();
 	doSend("var status");
 	doSend("var almstatus");
 	setTimeout(getInfo, 2000);
 }
 function getMediaInfo()
 {
-	
-	
+	doSend("var volume");
+	doSend("var song 1");
 }
 function updateClock()
 {

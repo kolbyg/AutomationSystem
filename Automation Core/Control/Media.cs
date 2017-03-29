@@ -11,89 +11,186 @@ namespace Automation_Core.Control
     { 
         public static string Play()
         {
-            if(Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if(Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.Play();
                 return "Media Playing";
             }
-            else if(Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.Play();
-                return "Media Playing";
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    Play(x);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string Play(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.Play();
+                    return "Media Playing";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string Pause()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.Pause();
                 return "Media Paused";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.Pause();
-                return "Media Paused";
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    Pause(x);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string Pause(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.Pause();
+                    return "Media Paused";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string Stop()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.Stop();
                 return "Media Stopped";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.Stop();
-                return "Media Stopped";
-
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    Stop(x);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string Stop(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.Stop();
+                    return "Media Stopped";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string Next()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.Next();
                 return "Media Advanced";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.Next();
-                return "Media Advanced";
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    Next(x);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string Next(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.Next();
+                    return "Media Advanced";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string Prev()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
-                return "Function not supported by current media player, command ignored.";
+                return "Function not supported by the internal media player, command ignored.";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.Prev();
-                return "Media Reverted";
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    Prev(x);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string Prev(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.Prev();
+                    return "Media Backed up";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string ResetRandomization()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.ResetRandomization();
                 return "Randomization reset";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                return "Function not supported by current media player, command ignored.";
+                return "This function is only supported by the internal media player, command ignored.";
             }
-            return "Invalid Music Player";
         }
         public static string VolUp()
         {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
             if (Variables.CurVolume == Variables.MaxVolume)
                 return "Volume is at limit set by volume governer, cannot be set higher";
             if(Variables.CurVolume == 100)
@@ -104,24 +201,30 @@ namespace Automation_Core.Control
             SetVol(Variables.CurVolume);
             return "Volume turned up, current level: " + Variables.CurVolume;
         }
-        public static string InitPlayer()
+        public static string InitNodePlayer(int NodeID)
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.nodes[NodeID].Type == "MPD")
             {
-                Variables.musicPlayer = new Automation_Core.Media.MusicPlayer();
-                Variables.musicPlayer.setup();
-                Variables.musicPlayer.BeginPlay();
-                return "Media player INTERNAL has been started";
-            }
-            else if (Variables.MediaPlayerType == "MPD")
-            {
-                MPDControl.setup();
+                MPDControl.setup(NodeID);
                 return "Media player MPD has been started";
             }
             return "Invalid Music Player";
         }
+        public static string InitInternalPlayer()
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            Variables.musicPlayer = new Automation_Core.Media.MusicPlayer();
+                Variables.musicPlayer.setup();
+                Variables.musicPlayer.BeginPlay();
+                return "Media player INTERNAL has been started";
+        }
         public static string VolDown()
         {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
             if (Variables.CurVolume == 0)
                 return "Volume is at 0, cannot be set any lower.";
             Variables.CurVolume--;
@@ -130,6 +233,8 @@ namespace Automation_Core.Control
         }
         public static string SetVol(int Value)
         {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
             if (Value > 100 || Value < 0)
             {
                 Value = 0;
@@ -141,30 +246,77 @@ namespace Automation_Core.Control
                 return "Chosen volume is outside the allowable range set by the volume governer, acceptable values are 0-" + Variables.MaxVolume;
             }
             Variables.CurVolume = Value;
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.SetVol();
                 return "Volume has been set to " + Variables.CurVolume;
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.SetVol();
-                return "Volume has been set to " + Variables.CurVolume;
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    SetVol(x, Value);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string SetVol(int NodeID, int Value)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Value > 100 || Value < 0)
+            {
+                Value = 0;
+                return "Chosen volume is invalid, acceptable values are from 0-100";
+            }
+            if (Value > Variables.MaxVolume)
+            {
+                Value = Variables.MaxVolume;
+                return "Chosen volume is outside the allowable range set by the volume governer, acceptable values are 0-" + Variables.MaxVolume;
+            }
+            Variables.CurVolume = Value;
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.SetVol();
+                    return "Volume has been set to " + Variables.CurVolume;
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string LoadPL(string PLName)
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
-                return "Function not supported by current media player, command ignored.";
+                return "Function not supported by the internal media player, command ignored.";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.LoadPL(PLName);
-                return "Playlist load queued";
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    LoadPL(x, PLName);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string LoadPL(int NodeID, string PLName)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.LoadPL(PLName);
+                    return "Playlist changed";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static int GetVol()
         {
@@ -172,11 +324,22 @@ namespace Automation_Core.Control
         }
         public static string GetSong()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 return Variables.musicFiles[Variables.curMusicFile].Substring(Variables.musicFiles[Variables.curMusicFile].LastIndexOf('\\') + 1);
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
+            {
+                return "Command error, internal music player is disabled, please send this command with a node id argument to address a node specifically";
+            }
+        }
+        public static string GetSong(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.nodes[NodeID].Type == "MPD")
             {
                 return MPDControl.GetSong();
             }
@@ -184,33 +347,55 @@ namespace Automation_Core.Control
         }
         public static string Rescan()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 Variables.musicPlayer.refreshPlayList();
                 return "All media folders have been rescanned.";
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-                MPDControl.Rescan();
-                return "Server rescan started.";
+                //run command on all nodes
+                for (int x = 0; x < Variables.nodes.Length; x++)
+                {
+                    if (Variables.nodes[x] == null)
+                        continue;
+                    Rescan(x);
+                }
+                return "Internal player disabled, sending command to all nodes";
             }
-            return "Invalid Music Player";
+        }
+        public static string Rescan(int NodeID)
+        {
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            switch (Variables.nodes[NodeID].Type)
+            {
+                case "MPD":
+                    MPDControl.Rescan();
+                    return "Media rescanned";
+            }
+            return "Node " + NodeID + " is not a media player, skipping";
         }
         public static string Resume()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 return Play();
             }
-            else if (Variables.MediaPlayerType == "MPD")
+            else
             {
-
+                return "This function is only supported by the internal media player, command ignored.";
             }
-            return "Invalid Music Player";
         }
         public static string Shuffle()
         {
-            if (Variables.MediaPlayerType == "INTERNAL")
+            if (!Variables.MediaPlayerEnabled)
+                return "Media player function is not enabled";
+            if (Variables.InternalMediaPlayerEnabled)
             {
                 return "Function not supported by current media player, command ignored.";
             }

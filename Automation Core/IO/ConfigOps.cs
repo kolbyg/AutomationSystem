@@ -205,8 +205,8 @@ namespace Automation_Core.IO
             Variables.LearningEnabled = Convert.ToBoolean(data["Learning"]["Enabled"]);
             Variables.IrrigationEnabled = Convert.ToBoolean(data["Irrigation"]["Enabled"]);
             Variables.MaxVolume = Convert.ToInt32(data["Music"]["MaxVolume"]);
-            Variables.MediaPlayerType = data["Music"]["Player"];
-            Variables.MediaPath = data["Music"]["Path"];
+            Variables.InternalMediaPlayerEnabled = Convert.ToBoolean(data["Music"]["InternalPlayerEnabled"]);
+            Variables.InternalMediaPath = data["Music"]["InternalPlayerPath"];
             return "Finished loading main config";
         }
         public static void CreateMainConfig()
@@ -215,8 +215,8 @@ namespace Automation_Core.IO
             FileIniDataParser parser = new FileIniDataParser();
             IniData data = new IniData();
             data["Music"]["Enabled"] = "true";
-            data["Music"]["Player"] = "INTERNAL";
-            data["Music"]["Path"] = @"I:\Users\Kolby\OneDrive\PL Music\PLAYLIST";
+            data["Music"]["InternalPlayerEnabled"] = "true";
+            data["Music"]["InternalPlayerPath"] = @"I:\Users\Kolby\OneDrive\PL Music\PLAYLIST";
             data["Music"]["MaxVolume"] = "75";
             data["Learning"]["Enbaled"] = "true";
             data["Irrigation"]["Enbaled"] = "true";

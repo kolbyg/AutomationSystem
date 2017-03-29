@@ -295,7 +295,10 @@ namespace Automation_Core
                         case "volume":
                             return "Volume:" + Control.Media.GetVol();
                         case "song":
-                            return "Song:" + Control.Media.GetSong();
+                            if(cmd.Length > 2)
+                                return "Song:" + Control.Media.GetSong(Convert.ToInt32(cmd[2]));
+                            else
+                                return "Song:" + Control.Media.GetSong();
                         case "status":
                             return "Status:" + Control.System.GetStatus();
                         case "almstatus":
