@@ -73,7 +73,7 @@ $('#ls-loginbox-enter').click(function(){
     handleLogin($('#ls-loginbox-input').val())
 });
 var websocket;
-var wsUri = "ws://172.17.2.92:5400/AtmComm";
+var wsUri = "ws://127.0.0.1:5400/AtmComm";
 function initWS()
 {
 websocket = new WebSocket(wsUri);

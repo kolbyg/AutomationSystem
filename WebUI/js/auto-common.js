@@ -37,7 +37,7 @@ var waterstatus = "UNDEFINED";
 var kwdraw = "UNDEFINED";
 var uid = getUrlVars()["uid"];
 var nextevt = "UNDEFINED";
-var wsUri = "ws://172.17.2.92:5400/AtmComm";
+var wsUri = "ws://127.0.0.1:5400/AtmComm";
 var websocket;
 if(uid === null || uid === "")
 {
