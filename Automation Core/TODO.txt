@@ -2,8 +2,12 @@
 add arduino ethernet support as a node
 add arduino code
 
+music player needs to accept all commands for zones specifically
+HTML page, needs to address the music player properly depending on zone
+
 LOW PRIORITY:
 ADD the ability for multiple MPD nodes rather then just one - mpd should act as a node, not something specialy coded - DONE, but MPDControl need to be a non static class and should be stored in the node array
+individual lighting control
 
 add support for creating mpd playlists based on subfolders
 Add support for rooms/locations, lots of config, every detail
